@@ -19,6 +19,7 @@ app.use(function (req, res, next) {
 
 // Initialize API routes
 app.post('/api/item/move', moveItems.moveItems);
+app.delete('/api/item/delete', moveItems.deleteItem);
 app.get('/api/item/search', searchItems.searchItem);
 
 app.listen(process.env.PORT || 8080);

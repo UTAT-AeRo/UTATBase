@@ -26,4 +26,22 @@ module.exports = {
             res.send("OK")
         })
     },
+
+    deleteItem: function (req, res) {
+        if (req.query.id === undefined) {
+            res.status(400);
+            res.send("missing id in body");
+            return
+        }
+
+        db.deleteItem(req.query.id, function (err) {
+            if (err) {
+                res.status(500);
+                res.send(err);
+                return
+            }
+
+            res.send("OK")
+        })
+    }
 };

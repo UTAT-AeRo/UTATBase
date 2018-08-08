@@ -24,6 +24,19 @@ module.exports = {
         });
     },
 
+    deleteItem: function (id, callback) {
+        var sql = `DELETE from inventory
+            WHERE id = ` + id;
+        connection.query(sql, function (err, result) {
+            if (result["affectedRows"] === 0) {
+                callback("item not found");
+                return
+            }
+
+            callback(err)
+        });
+    },
+
     searchItems: function (id, altID, name, category, callback) {
         // Hacky hack hack
         if (id === undefined) {
