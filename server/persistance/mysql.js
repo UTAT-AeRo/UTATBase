@@ -2,11 +2,25 @@ var mysql = require('mysql')
 var connection = mysql.createConnection({
     host: 'mysql',
     user: process.env.DB_USER,
-    password: process.env.PASS,
+    password: process.env.DB_PASS,
     database: 'utatinventory'
 });
 
 connection.connect()
+
+var sql = `CREATE TABLE inventory (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  alternate_id text,
+  name text NOT NULL,
+  status text NOT NULL,
+  description text,
+  category text,
+  picture_url text,
+  PRIMARY KEY (id)
+)`;
+connection.query(sql, function (err, result) {
+    console.log(err)
+});
 
 module.exports = {
     addItem: function (alt_id, name, status, description, category, picture_url, callback) {

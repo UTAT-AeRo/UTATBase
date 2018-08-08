@@ -12,12 +12,13 @@ services:
      volumes:
        - ./server/:/home/node/app
      ports:
-       - "8500:80"
+       - "8500:8080"
      restart: always
      environment:
        DB_USER: root
        DB_PASS: passworddev
-       PORT: 80
+       PORT: 8080
+     command: "node index.js"
 
   mysql:
      image: mysql:5.7
