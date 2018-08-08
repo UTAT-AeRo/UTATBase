@@ -1,9 +1,8 @@
 var mysql = require('mysql')
 var connection = mysql.createConnection({
-    host: 'wattpad.io',
-    port: '9998',
-    user: 'root',
-    password: 'passworddev',
+    host: 'mysql',
+    user: process.env.DB_USER,
+    password: process.env.PASS,
     database: 'utatinventory'
 });
 

@@ -1,20 +1,28 @@
 version: '2'
 
 services:
-  test:
+  backend:
      depends_on:
        - mysql
      links:
        - mysql:mysql
-     image: beevelop/cordova:latest
+     image: node:7
+     user: "node"
+     working_dir: /home/node/app
+     volumes:
+       - ./server/:/home/node/app
      ports:
-       - "9000:80"
+       - "8500:80"
      restart: always
+     environment:
+       DB_USER: root
+       DB_PASS: passworddev
+       PORT: 80
 
   mysql:
      image: mysql:5.7
      ports:
-       - "9998:3306"
+       - "8501:3306"
      volumes:
        - mysqldata:/var/lib/mysql
      restart: always
