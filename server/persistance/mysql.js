@@ -28,9 +28,9 @@ module.exports = {
 
         connection.query(`SELECT * FROM inventory
         WHERE id = ` + id + `
-        OR alternate_id = "` + altID.toLowerCase() + `"
-        OR name LIKE "` + name.toLowerCase() + `"
-        OR category LIKE "` + category.toLowerCase() + `"
+        OR alternate_id = "` + altID + `"
+        OR name LIKE "` + name + `"
+        OR category LIKE "` + category + `"
         `, function (err, rows, fields) {
             callback(rows, err)
         })
