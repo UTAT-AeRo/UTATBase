@@ -10,14 +10,18 @@ var connection = mysql.createConnection({
 connection.connect()
 
 module.exports = {
-    checkInItem: function (req, res) {
-        var id = req.body.id
+    moveItem: function (id, check_in, callback) {
+        var status = "OUT";
+        if (check_in === true) {
+            status = "IN"
+        }
 
-        connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-            if (err) throw err
-
-            console.log('The solution is: ', rows[0].solution)
-        })
+        var sql = `UPDATE inventory
+            SET status = "` + status + `"
+            WHERE id = ` + id;
+        connection.query(sql, function (err, result) {
+            callback(err)
+        });
     },
 
     searchItems: function (id, altID, name, category, callback) {

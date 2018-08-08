@@ -5,6 +5,7 @@ module.exports = {
         db.searchItems(req.query.id, req.query.alt_id, req.query.name, req.query.category, function (rows, err) {
             if (err) {
                 res.status(500);
+                res.send(err);
                 return
             }
 
