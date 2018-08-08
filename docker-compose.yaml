@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  test:
+     depends_on:
+       - mysql
+     links:
+       - mysql:mysql
+     image: beevelop/cordova:latest
+     ports:
+       - "9000:80"
+     restart: always
+
+  mysql:
+     image: mysql:5.7
+     ports:
+       - "9998:3306"
+     volumes:
+       - mysqldata:/var/lib/mysql
+     restart: always
+     environment:
+       WORDPRESS_DB_USER: dbuser
+       MYSQL_ROOT_PASSWORD: passworddev
+       MYSQL_USER: dbuser
+       MYSQL_PASSWORD: passworddev
+
+volumes:
+    mysqldata:
