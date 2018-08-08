@@ -7,11 +7,34 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Home</title>
+    <title>Check In</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+		console.log("mothballs")	
+			function doSearch() {
+				var settings = {
+				  "async": true,
+				  "crossDomain": true,
+				  "url": "http://cf83b4f0.ngrok.io/api/item/search",
+				  "method": "POST",
+				  "headers": {
+					"cache-control": "no-cache",
+					"postman-token": "7fa7fa50-ca71-95e1-8737-003751fc72f0"
+				  }
+				}
+
+				$.ajax(settings).done(function (response) {
+				  console.log(response);
+				});
+			}
+			console.log(doSearch)
+		});
+	</script>
   </head>
 
   <body class="text-center">   
@@ -26,14 +49,26 @@
       </div>      
     </header>
 
-    <h1>Hi, User</h1>
-    <div class="home">  
-        <button type="button" class="btn"><span class="glyphicon glyphicon-arrow-right"></span>Check In</button>
-        <button type="button" class="btn">Check Out</button>
-        <button type="button" class="btn">Authorize</button>
-        <button type="button" class="btn">Search</button>
-        <button type="button" class="btn">Manage Items</button>
-        <button type="button" class="btn">Manage Users</button>        
+    <div class="check-in page">     
+		<h1 class="header">Check-in</h1>
+		<input type="text" class="form-control" placeholder="Database ID" />
+		<input type="text" class="form-control" placeholder="Assosciated ID (seperate with commas for multiple)" />
+		<input type="text" class="form-control" placeholder="Item Name" />
+		
+		<div class="dropdown">
+		  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Dropdown button
+		  </button>
+		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<a class="dropdown-item" href="#">Action</a>
+			<a class="dropdown-item" href="#">Another action</a>
+			<a class="dropdown-item" href="#">Something else here</a>
+		  </div>
+		</div>
+		<div class="button-holder" style="text-align: center;" onclick="">
+			<button class="btn btn-primary">Search</button>
+			<button class="btn btn-danger">Clear</button>
+		</div>
     </div>
   </body>
   <style type="text/css">

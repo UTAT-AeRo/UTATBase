@@ -60,3 +60,28 @@ header .division {
 .scan-overlay-show {
 	visibility: visible; display: block;
 }
+
+.page {	
+	width: 75%;
+	margin-left: 12.5%;
+	padding: 2% 5%;
+}
+
+.page .title {
+	
+}
+
+.check-in {
+	text-align: left;
+	color: black;	
+	background: white;
+}
+
+.check-in input {
+	width:100%;
+	margin-bottom: 1em;
+}
+
+.check-in p {
+	text-align:left;
+}
